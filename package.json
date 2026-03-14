@@ -4,7 +4,13 @@
   "description": "Type-safe parsers for unknown data using neverthrow Result types",
   "license": "MIT",
   "author": "Stanislav Titenko",
-  "keywords": ["neverthrow", "parser", "validation", "result", "typescript"],
+  "keywords": [
+    "neverthrow",
+    "parser",
+    "validation",
+    "result",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/resetko/neverthrow-parse.git"
