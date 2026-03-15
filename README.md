@@ -1,5 +1,8 @@
 # neverthrow-parse
 
+[![CI](https://github.com/resetko/neverthrow-parse/actions/workflows/ci.yml/badge.svg)](https://github.com/resetko/neverthrow-parse/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/neverthrow-parse)](https://www.npmjs.com/package/neverthrow-parse)
+
 Type-safe parsers for unknown data using [neverthrow](https://github.com/supermacro/neverthrow) Result types.
 
 Every parser takes an `unknown` input and returns a `Result<T, ParseError>` — no exceptions, just values.
