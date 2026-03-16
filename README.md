@@ -48,6 +48,15 @@ Returns `Ok<number>` or `Err<NumberParseError>`. Rejects `NaN`.
 
 Returns `Ok<bigint>` or `Err<BigintParseError>`.
 
+### `json(input, reviver?)`
+
+Parses a JSON string. Returns `Ok<JsonValue>` or `Err<JsonParseError>`. Accepts an optional `reviver` function, same as `JSON.parse`.
+
+```ts
+string(input).andThen(json)
+// Ok<JsonValue> or Err<StringParseError | JsonParseError>
+```
+
 ### `object(input)`
 
 Validates that input is a non-null, non-array object. Returns `Ok<Record<PropertyKey, unknown>>` or `Err<ObjectParseError>`.
