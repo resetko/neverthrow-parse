@@ -1,6 +1,6 @@
 {
   "name": "neverthrow-parse",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Type-safe parsers for unknown data using neverthrow Result types",
   "license": "MIT",
   "author": "Stanislav Titenko",
