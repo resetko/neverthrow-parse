@@ -23,10 +23,8 @@ const name = string('hello') // Ok<string>
 const age = number('oops') // Err<{ type: 'input_is_not_a_number', input: 'oops' }>
 
 // Object shapes
-const user = shape(json, {
-  name: string,
-  age: number,
-})
+const parseUser = shape({ name: string, age: number })
+const user = parseUser(json)
 // Ok<{ name: string, age: number }> or Err with structured error
 
 // Arrays
@@ -47,6 +45,19 @@ Returns `Ok<number>` or `Err<NumberParseError>`. Rejects `NaN`.
 ### `bigint(input)`
 
 Returns `Ok<bigint>` or `Err<BigintParseError>`.
+
+### `boolean(input)`
+
+Returns `Ok<boolean>` or `Err<BooleanParseError>`.
+
+### `match(expected)`
+
+Returns a parser that checks strict equality (`===`) against `expected`, inferring the literal type.
+
+```ts
+match('admin')('admin') // Ok<'admin'>
+match('admin')('user') // Err<{ type: 'input_does_not_match', input: 'user', expected: 'admin' }>
+```
 
 ### `json(input, reviver?)`
 
@@ -79,19 +90,17 @@ recordOf(json, { key: string, value: number })
 // Ok<Record<string, number>>
 ```
 
-### `shape(input, schema)`
+### `shape(schema)`
 
-Parses an object against a schema of named parsers. Infers the output type from the schema.
+Returns a parser that validates an object against a schema of named parsers. Infers the output type from the schema.
 
 ```ts
-const result = shape(json, {
-  host: string,
-  port: number,
-})
+const parseConfig = shape({ host: string, port: number })
+const result = parseConfig(json)
 // Result<{ host: string, port: number }, ShapeParseError<...>>
 ```
 
-Errors include context: `missing_key` (with key name) or `value_parse_error` (with key name and nested error).
+On failure, the error includes the key name and the nested parser error as a `value_parse_error`.
 
 ## Error types
 
